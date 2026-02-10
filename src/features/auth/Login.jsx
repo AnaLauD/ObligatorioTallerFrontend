@@ -29,7 +29,7 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
-      <h2 className="login-title">Iniciar sesión</h2>
+      <h2 className="login-title">Iniciar sesion</h2>
 
       {error && <p className="login-error">{error}</p>}
 

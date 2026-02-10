@@ -1,0 +1,17 @@
+.local-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.local-card__img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.local-card__btn {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
