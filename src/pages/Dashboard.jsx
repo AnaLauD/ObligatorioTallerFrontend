@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { useAuth } from "../features/auth/AuthenticationContext";
 import Locales from "./Locales";
+import Dishes from "./Dishes";
 import "./css/Dashboard.css";
 
 function Dashboard() {
   const { user, logout } = useAuth();
+  const [activeTab, setActiveTab] = useState("locales");
 
-  
   return (
     <div className="dashboard">
       <header className="dashboard-header">
@@ -19,8 +21,26 @@ function Dashboard() {
         </button>
       </header>
 
+      {/* TABS */}
+      <div className="dashboard-tabs">
+        <button
+          className={activeTab === "locales" ? "active" : ""}
+          onClick={() => setActiveTab("locales")}
+        >
+          Locales
+        </button>
+
+        <button
+          className={activeTab === "dishes" ? "active" : ""}
+          onClick={() => setActiveTab("dishes")}
+        >
+          Platos
+        </button>
+      </div>
+
       <main className="dashboard-content">
-        <Locales />
+        {activeTab === "locales" && <Locales />}
+        {activeTab === "dishes" && <Dishes />}
       </main>
     </div>
   );

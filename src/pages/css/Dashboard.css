@@ -64,3 +64,33 @@
   background: transparent;
 }
 
+/* ===== Tabs ===== */
+.dashboard-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-tabs button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.dashboard-tabs button:hover {
+  background: #d1d5db;
+}
+
+.dashboard-tabs .active {
+  background: #6366f1;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}

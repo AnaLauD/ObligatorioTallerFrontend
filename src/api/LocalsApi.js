@@ -22,6 +22,6 @@ export const getLocales = async (token, filtros = {}) => {
   }
 
   const data = await res.json();
-  return data.items; // 🔥 devolvemos directamente el array
+  return data.items;
 };
 

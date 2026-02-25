@@ -15,7 +15,7 @@ export const login = async (data) => {
 };
 
 export const register = async (data) => {
-  const res = await fetch("/api/auth/register", {
+  const res = await fetch("https://api-react-taller-production.up.railway.app/api/auth/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
