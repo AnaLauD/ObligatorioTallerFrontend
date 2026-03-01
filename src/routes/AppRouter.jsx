@@ -3,6 +3,7 @@ import Login from "../features/auth/Login";
 import Register from "../features/auth/Register";
 import Dashboard from "../pages/Dashboard";
 import PrivateRoute from "./PrivateRouter";
+import LocalDetail from "../pages/LocalDetail";
 
 function AppRouter() {
   return (
@@ -20,6 +21,15 @@ function AppRouter() {
           </PrivateRoute>
         }
       />
+
+      <Route
+  path="/local/:id"
+  element={
+    <PrivateRoute>
+      <LocalDetail />
+    </PrivateRoute>
+  }
+/>
     </Routes>
   );
 }

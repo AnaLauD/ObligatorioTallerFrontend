@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../features/auth/AuthenticationContext";
 import Locales from "./Locales";
+import Header from "../components/Header";
 import Dishes from "./Dishes";
 import "./css/Dashboard.css";
 
@@ -10,18 +11,9 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <header className="dashboard-header">
-        <div className="dashboard-title">
-          <h1>Dashboard</h1>
-          <p>Bienvenido {user?.name || user?.username}</p>
-        </div>
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} user={user} logout={logout} />
 
-        <button className="logout-btn" onClick={logout}>
-          Cerrar sesión
-        </button>
-      </header>
-
-      {/* TABS */}
+      
       <div className="dashboard-tabs">
         <button
           className={activeTab === "locales" ? "active" : ""}
@@ -36,12 +28,16 @@ function Dashboard() {
         >
           Platos
         </button>
-      </div>
+        </div>
+
+
 
       <main className="dashboard-content">
         {activeTab === "locales" && <Locales />}
         {activeTab === "dishes" && <Dishes />}
       </main>
+
+      
     </div>
   );
 }

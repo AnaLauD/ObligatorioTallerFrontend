@@ -25,3 +25,28 @@ export const getLocales = async (token, filtros = {}) => {
   return data.items;
 };
 
+export const getLocalById = async (id, token) => {
+
+  console.log("Obteniendo local con ID:", id);
+
+  const res = await fetch(
+    `https://api-react-taller-production.up.railway.app/api/locals/${id}`, 
+  {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    } )
+
+     if (!res.ok) {
+    throw new Error("Error al obtener locales");
+  }
+
+  const data = await res.json();
+
+  console.log("Datos del local obtenido:", data);
+  return data.item;
+  
+  }
+
