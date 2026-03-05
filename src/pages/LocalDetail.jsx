@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getLocalById } from "../api/LocalsApi";
 import { useAuth } from "../features/auth/AuthenticationContext";
+import { createReview } from "../api/LocalsApi";
 import Header from "../components/Header";
 import "./css/LocalDetail.css";
 
@@ -11,10 +12,12 @@ const { user, logout } = useAuth();
   const { id } = useParams();
   const [local, setLocal] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState("");
+  const token = localStorage.getItem("token");
+
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
 
     console.log("Obteniendo detalle del local con ID:", id);    
 
@@ -29,6 +32,29 @@ const { user, logout } = useAuth();
         setLoading(false);
       });
   }, [id]);
+
+  const handleSubmitReview = async (e) => {
+  e.preventDefault();
+
+  try { 
+
+    const data = {
+      rating: Number(rating),
+      comment: comment
+    };
+
+    await createReview(id, token, data);
+
+    alert("Review creada correctamente");
+
+    setComment("");
+    setRating(5);
+
+  } catch (error) {
+    console.error(error);
+    alert("Error al crear la review");
+  }
+};
 
   if (loading) return <p className="loading">Cargando...</p>;
   if (!local) return <p>No se encontró el local</p>;
@@ -73,6 +99,34 @@ const { user, logout } = useAuth();
         </div>
       </div>
     </div>
+
+    <div className="review-section">
+    <div className="review-form">
+  <h3>Dejar una opinión</h3>
+
+  <form onSubmit={handleSubmitReview}>
+    
+    <label>Puntuación:</label>
+    <select value={rating} onChange={(e) => setRating(e.target.value)}>
+      <option value="1">1 ⭐</option>
+      <option value="2">2 ⭐</option>
+      <option value="3">3 ⭐</option>
+      <option value="4">4 ⭐</option>
+      <option value="5">5 ⭐</option>
+    </select>
+
+    <label>Comentario:</label>
+    <textarea
+      value={comment}
+      onChange={(e) => setComment(e.target.value)}
+      placeholder="Escribe tu opinión..."
+      required
+    />
+
+    <button type="submit">Enviar review</button>
+  </form>
+</div>
+</div>
     </>
   );
 }

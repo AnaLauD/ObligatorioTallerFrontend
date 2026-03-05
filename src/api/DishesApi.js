@@ -28,3 +28,43 @@ export const getDishes = async (token, filtros = {}) => {
   const data = await res.json();
   return data.items;
 };
+
+  export const getDishById = async (id, token) => {
+
+  console.log("Obteniendo dish con ID:", id);
+
+  const res = await fetch(
+    `https://api-react-taller-production.up.railway.app/api/dishes/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Error al obtener dish");
+  }
+
+  const data = await res.json();
+  return data.item;
+};
+
+export const getReview = async (id, token) => {
+  const res = await fetch(
+    `https://api-react-taller-production.up.railway.app/api/dishes/${id}/reviews`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Error al obtener review");
+  }
+  return await res.json();
+};

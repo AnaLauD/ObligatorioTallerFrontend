@@ -47,6 +47,25 @@ export const getLocalById = async (id, token) => {
 
   console.log("Datos del local obtenido:", data);
   return data.item;
-  
+
   }
 
+ export const createReview = async (id, token, data) => {
+  const res = await fetch(
+    `https://api-react-taller-production.up.railway.app/api/locals/${id}/reviews`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Error al crear review");
+  }
+
+  return await res.json();
+};
