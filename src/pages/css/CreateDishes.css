@@ -1,0 +1,62 @@
+.create-dish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.create-dish h2 {
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #333;
+}
+
+.create-dish form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 420px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
+}
+
+.create-dish input,
+.create-dish textarea,
+.create-dish select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+.create-dish input:focus,
+.create-dish textarea:focus,
+.create-dish select:focus {
+  outline: none;
+  border: 1px solid #3498db;
+}
+
+.create-dish textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.create-dish button {
+  margin-top: 10px;
+  padding: 12px;
+  background: #3498db;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.create-dish button:hover {
+  background: #2980b9;
+}

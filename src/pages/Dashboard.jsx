@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../features/auth/AuthenticationContext";
 import Locales from "./Locales";
+import CreateLocal from "./CreateLocals";
+import CreateDish from "./CreateDishes";
 import Header from "../components/Header";
 import Dishes from "./Dishes";
 import "./css/Dashboard.css";
@@ -35,6 +37,8 @@ function Dashboard() {
       <main className="dashboard-content">
         {activeTab === "locales" && <Locales />}
         {activeTab === "dishes" && <Dishes />}
+        {activeTab === "createLocal" && <CreateLocal />}
+        {activeTab === "createDish" && <CreateDish />}
       </main>
 
       

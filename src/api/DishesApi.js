@@ -68,3 +68,20 @@ export const getReview = async (id, token) => {
   }
   return await res.json();
 };
+
+export const createDish = async (token, data) => {
+  const res = await fetch("https://api-react-taller-production.up.railway.app/api/dishes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al crear plato");
+  }
+
+  return await res.json();
+};
