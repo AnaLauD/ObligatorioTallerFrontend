@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createLocal } from "../api/LocalsApi";
+import { useAuth } from "../features/auth/AuthenticationContext";
+import Header from "../components/Header";
 import "./css/CreateLocals.css";
 
 function CreateLocal() {
+
+    const { user, logout } = useAuth();
 
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
@@ -61,6 +65,10 @@ function CreateLocal() {
   };
 
   return (
+
+    <>
+    <Header activeTab={null} setActiveTab={null} user={user} logout={logout} />
+
     <div className="create-local">
 
       <h2>Crear Local</h2>
@@ -145,6 +153,7 @@ function CreateLocal() {
       </form>
 
     </div>
+    </>
   );
 }
 

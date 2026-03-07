@@ -3,6 +3,8 @@ import Login from "../features/auth/Login";
 import Register from "../features/auth/Register";
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/Profile";
+import CreateDish from "../pages/CreateDishes";
+import CreateLocal from "../pages/CreateLocals";
 import UserProfile from "../pages/UserProfile";
 import PrivateRoute from "./PrivateRouter";
 import LocalDetail from "../pages/LocalDetail";
@@ -48,6 +50,24 @@ function AppRouter() {
         element={
           <PrivateRoute>
             <LocalDetail />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/create-local"
+        element={
+          <PrivateRoute>
+            <CreateLocal />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/create-dish"
+        element={
+          <PrivateRoute>
+            <CreateDish />
           </PrivateRoute>
         }
       />

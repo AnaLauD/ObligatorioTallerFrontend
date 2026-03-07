@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../features/auth/AuthenticationContext";
 import { getLocales } from "../api/LocalsApi";
+import LocalCard from "../components/LocalCard";
+import DishCard from "../components/DishCard";
 import { getDishes } from "../api/DishesApi";
 import { getUserById } from "../api/UsersApi";
 import Header from "../components/Header";
@@ -8,11 +11,12 @@ import "./css/Profile.css";
 
 function UserProfile() {
 
+  const { user, logout } = useAuth();
   const { id } = useParams();
   console.log("ID de usuario en UserProfile:", id);
   const token = localStorage.getItem("token");
 
-  const [user, setUser] = useState(null);
+  const [currentUser, setcurrentUser] = useState(null);
   const [locals, setLocals] = useState([]);
   const [dishes, setDishes] = useState([]);
 
@@ -34,7 +38,7 @@ function UserProfile() {
         dish => dish.creatorId === Number(id)
     );
 
-        setUser(userData);
+        setcurrentUser(userData);
         setLocals(filteredLocals);
         setDishes(filteredDishes);
 
@@ -51,9 +55,12 @@ function UserProfile() {
   }, [id]);
 
   return (
+    <>   
+    
+     <Header activeTab={null} setActiveTab={null} user={user} logout={logout} />
     <div className="profile-page">
 
-      <h1>{user?.name}</h1>
+      <h1>{currentUser?.name}</h1>
 
       <section className="profile-section">
 
@@ -61,15 +68,7 @@ function UserProfile() {
 
         <div className="locals-list">
           {locals.map(local => (
-            <div key={local.id} className="card">
-              <h3>{local.name}</h3>
-              <img
-                src={local.photos[0]}
-                alt={local.name}
-                className="local-image"
-            />
-              <p>{local.city}</p>
-            </div>
+            <LocalCard key={local.id} local={local} />
           ))}
         </div>
 
@@ -81,16 +80,14 @@ function UserProfile() {
 
         <div className="dishes-list">
           {dishes.map(dish => (
-            <div key={dish.id} className="card">
-              <h3>{dish.name}</h3>
-              <p>${dish.price}</p>
-            </div>
+            <DishCard key={dish.id} dish={dish} />
           ))}
         </div>
 
       </section>
 
     </div>
+    </>
   );
 }
 

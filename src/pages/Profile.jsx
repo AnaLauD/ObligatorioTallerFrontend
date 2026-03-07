@@ -8,7 +8,7 @@ import "./css/Profile.css";
 
 function Profile() {
 
-  const { user, token } = useAuth();
+  const { user, token, logout } = useAuth();
   const { id } = useParams();
 
   const [locals, setLocals] = useState([]);
@@ -49,6 +49,9 @@ function Profile() {
   }, [token, userId]);
 
   return (
+    <>   
+    
+     <Header activeTab={null} setActiveTab={null} user={user} logout={logout} />
     <div className="profile-page">
 
       <h1>{id ? "Perfil de usuario" : user?.name}</h1>
@@ -89,6 +92,7 @@ function Profile() {
       </section>
 
     </div>
+    </>
   );
 }
 

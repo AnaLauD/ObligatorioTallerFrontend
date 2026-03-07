@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./css/Header.css";
 
 function Header({ activeTab, setActiveTab, user, logout }) {
   return (
@@ -10,26 +12,21 @@ function Header({ activeTab, setActiveTab, user, logout }) {
 
       <div className="header-actions">
 
-        <button
-          className="create-local-btn"
-          onClick={() => setActiveTab("createLocal")}
-        >
-          Crear Local
-        </button>
+        <Link to="/dashboard" className="home-btn">
+          Inicio
+        </Link>
 
-        <button
-          className="create-dish-btn"
-          onClick={() => setActiveTab("createDish")}
-        >
+        <Link to="/create-local" className="create-local-btn">
+            Crear Local
+        </Link>
+
+        <Link to="/create-dish" className="create-dish-btn">
           Crear Plato
-        </button>
+        </Link>
 
-        <button
-          className="profile-btn"
-          onClick={() => setActiveTab("profile")}
-        >
+        <Link to="/profile" className="profile-btn">
           Mi Perfil
-        </button>
+        </Link>
 
         <button
           className="logout-btn"
@@ -41,7 +38,9 @@ function Header({ activeTab, setActiveTab, user, logout }) {
       </div>
 
     </header>
+
   );
 }
+
 
 export default Header;

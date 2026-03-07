@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect, use } from "react";
+import { getLocales } from "../api/LocalsApi";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../features/auth/AuthenticationContext";
+import Header from "../components/Header";
 import { createDish } from "../api/DishesApi";
 import "./css/CreateDishes.css";
 
 function CreateDish() {
 
+  const { user, logout } = useAuth();
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [localId, setLocalId] = useState("");
@@ -12,8 +16,22 @@ function CreateDish() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
 
+  const [locales, setLocales] = useState([]);
+
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchLocals = async () => {
+        try {
+            const data = await getLocales(token);
+            setLocales(data);
+        } catch (error) {
+            console.error("Error fetching locals:", error);
+        } 
+    };  
+    fetchLocals();
+    }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +69,8 @@ function CreateDish() {
   };
 
   return (
+    <>
+    <Header activeTab={null} setActiveTab={null} user={user} logout={logout} />
     <div className="create-dish">
 
       <h2>Crear Plato</h2>
@@ -77,13 +97,18 @@ function CreateDish() {
           <option value="bebida">Bebida</option>
         </select>
 
-        <input
-          type="number"
-          placeholder="ID del local"
-          value={localId}
-          onChange={(e) => setLocalId(e.target.value)}
-          required
-        />
+        <select
+    value={localId}
+    onChange={(e) => setLocalId(Number(e.target.value))} // guardamos el id
+    required
+  >
+    <option value="">-- Selecciona un local --</option>
+    {locales.map((local) => (
+      <option key={local.id} value={local.id}>
+        {local.name} {/* aquí mostramos el nombre */}
+      </option>
+    ))}
+  </select>
 
         <input
           type="text"
@@ -112,6 +137,7 @@ function CreateDish() {
       </form>
 
     </div>
+    </>
   );
 }
 
