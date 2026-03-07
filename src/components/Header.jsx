@@ -25,6 +25,13 @@ function Header({ activeTab, setActiveTab, user, logout }) {
         </button>
 
         <button
+          className="profile-btn"
+          onClick={() => setActiveTab("profile")}
+        >
+          Mi Perfil
+        </button>
+
+        <button
           className="logout-btn"
           onClick={logout}
         >

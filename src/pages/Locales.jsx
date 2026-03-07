@@ -36,7 +36,7 @@ function Locales() {
 
   const handleVerDetalle = (id) => {
     console.log("Ver detalle del local:", id);
-    // después podés navegar con react-router
+
   };
 
   return (

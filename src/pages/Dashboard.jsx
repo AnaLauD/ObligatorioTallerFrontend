@@ -5,6 +5,8 @@ import CreateLocal from "./CreateLocals";
 import CreateDish from "./CreateDishes";
 import Header from "../components/Header";
 import Dishes from "./Dishes";
+import Profile from "./Profile";
+import UserProfile from "./UserProfile";
 import "./css/Dashboard.css";
 
 function Dashboard() {
@@ -39,6 +41,8 @@ function Dashboard() {
         {activeTab === "dishes" && <Dishes />}
         {activeTab === "createLocal" && <CreateLocal />}
         {activeTab === "createDish" && <CreateDish />}
+        {activeTab === "profile" && <Profile />}
+        {activeTab === "userProfile" && <Profile />}
       </main>
 
       

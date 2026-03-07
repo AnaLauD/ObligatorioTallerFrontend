@@ -1,4 +1,5 @@
 import React, { use } from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getDishById } from "../api/DishesApi";
 
@@ -61,7 +62,11 @@ function DishCard({ dish }) {
       <div className="dish-meta">
         <span>📍 {dish.city}</span>
         <span>🏠 {dish.local?.name}</span>
-        <span>👤 {dish.creator?.name}</span>
+        <span>
+        👤 <Link to={`/user/${dish.creator?.id}`}>
+          {dish.creator?.name}
+        </Link>
+      </span>
         <p>⭐ {averageRating} ({reviewCount} reviews)</p>
       </div>
     </div>

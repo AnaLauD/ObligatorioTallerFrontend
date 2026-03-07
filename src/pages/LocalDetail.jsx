@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getLocalById } from "../api/LocalsApi";
 import { useAuth } from "../features/auth/AuthenticationContext";
 import { createReview } from "../api/LocalsApi";
@@ -95,7 +96,10 @@ const { user, logout } = useAuth();
         </div>
 
         <div className="local-creator">
-          Creado por {local.creator?.name}
+          Creado por{" "}
+          <Link to={`/user/${local.creator?.id}`}>
+            {local.creator?.name}
+          </Link>
         </div>
       </div>
     </div>

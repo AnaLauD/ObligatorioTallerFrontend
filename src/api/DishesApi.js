@@ -9,6 +9,7 @@ export const getDishes = async (token, filtros = {}) => {
   if (filtros.local) params.append("localId", filtros.local);
   if (filtros.dateStarted) params.append("dateFrom", filtros.dateStarted);
   if (filtros.dateFinished) params.append("dateTo", filtros.dateFinished);
+  if (filtros.creatorId) params.append("creatorId", filtros.creatorId);
   const queryString = params.toString()
     ? `?${params.toString()}`
     : "";

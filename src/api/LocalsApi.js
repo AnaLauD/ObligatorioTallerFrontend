@@ -5,6 +5,7 @@ export const getLocales = async (token, filtros = {}) => {
   if (filtros.priceRange) params.append("priceRange", filtros.priceRange);
   if (filtros.rating) params.append("rating", filtros.rating);
   if (filtros.zone) params.append("zone", filtros.zone);
+  if (filtros.creatorId) params.append("creatorId", filtros.creatorId);
 
   const res = await fetch(
     `https://api-react-taller-production.up.railway.app/api/locals?${params.toString()}`,
