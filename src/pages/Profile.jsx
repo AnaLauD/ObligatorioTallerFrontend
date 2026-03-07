@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthenticationContext";
 import { getLocales } from "../api/LocalsApi";
 import { getDishes } from "../api/DishesApi";
+import LocalCard from "../components/LocalCard";
+import DishCard from "../components/DishCard";
 import Header from "../components/Header";
 import "./css/Profile.css";
 
@@ -62,15 +64,7 @@ function Profile() {
 
         <div className="locals-list">
           {locals.map((local) => (
-            <div key={local.id} className="card">
-              <h3>{local.name}</h3>
-              <img
-                src={local.photos?.[0] || "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/46/38/cb/de-tarde.jpg?w=900&h=500&s=1"}
-                alt={local.name}
-                className="local-image"
-                />
-              <p>{local.city}</p>
-            </div>
+            <LocalCard key={local.id} local={local} />
           ))}
         </div>
 
@@ -82,10 +76,7 @@ function Profile() {
 
         <div className="dishes-list">
           {dishes.map((dish) => (
-            <div key={dish.id} className="card">
-              <h3>{dish.name}</h3>
-              <p>${dish.price}</p>
-            </div>
+            <DishCard key={dish.id} dish={dish} />
           ))}
         </div>
 

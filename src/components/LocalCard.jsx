@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./LocalCard.css";
+import "./css/LocalCard.css";
 
 
 function LocalCard({ local, onVerDetalle }) {

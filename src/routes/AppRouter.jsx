@@ -8,6 +8,7 @@ import CreateLocal from "../pages/CreateLocals";
 import UserProfile from "../pages/UserProfile";
 import PrivateRoute from "./PrivateRouter";
 import LocalDetail from "../pages/LocalDetail";
+import DishDetail from "../pages/DishDetail";
 
 function AppRouter() {
   return (
@@ -50,6 +51,15 @@ function AppRouter() {
         element={
           <PrivateRoute>
             <LocalDetail />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/dish/:id"
+        element={
+          <PrivateRoute>
+            <DishDetail />
           </PrivateRoute>
         }
       />

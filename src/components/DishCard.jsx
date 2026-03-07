@@ -69,6 +69,12 @@ function DishCard({ dish }) {
       </span>
         <p>⭐ {averageRating} ({reviewCount} reviews)</p>
       </div>
+
+      <button className="details-button">
+        <Link to={`/dish/${dish.id}`}>
+          Ver detalle
+        </Link>
+      </button>
     </div>
   );
 }

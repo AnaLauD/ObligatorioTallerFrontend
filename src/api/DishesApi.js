@@ -9,6 +9,7 @@ export const getDishes = async (token, filtros = {}) => {
   if (filtros.local) params.append("localId", filtros.local);
   if (filtros.dateStarted) params.append("dateFrom", filtros.dateStarted);
   if (filtros.dateFinished) params.append("dateTo", filtros.dateFinished);
+  if (filtros.rating) params.append("rating", filtros.rating);
   if (filtros.creatorId) params.append("creatorId", filtros.creatorId);
   const queryString = params.toString()
     ? `?${params.toString()}`
@@ -66,6 +67,24 @@ export const getReview = async (id, token) => {
   );
   if (!res.ok) {
     throw new Error("Error al obtener review");
+  }
+  return await res.json();
+};
+
+export const createReview = async (id, token, data) => {
+  const res = await fetch(
+    `https://api-react-taller-production.up.railway.app/api/dishes/${id}/reviews`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Error al crear review");
   }
   return await res.json();
 };

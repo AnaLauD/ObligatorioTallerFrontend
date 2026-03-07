@@ -1,0 +1,178 @@
+/* DishDetail.css - todo centrado vertical y horizontalmente */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page-dish-detail {
+  min-height: 100vh; /* ocupa toda la pantalla */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente */
+  justify-content: flex-start; /* comienza desde arriba, luego ajustamos espacio con margen */
+  padding: 40px 20px;
+  background-color: #fafafa;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+/* Ficha del plato */
+.dish-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra la ficha horizontalmente */
+  width: 100%;
+}
+
+.dish-info {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.dish-info h2 {
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.dish-category {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: #333;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.dish-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.dish-data p {
+  margin: 5px 0;
+}
+
+.dish-rating {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.dish-creator {
+  font-size: 1rem;
+  color: #333;
+}
+
+.dish-creator a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.dish-creator a:hover {
+  text-decoration: underline;
+}
+
+/* Sección de reviews */
+.review-section {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra horizontalmente */
+  gap: 30px;
+}
+
+.review-form {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.review-form h3 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.review-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.review-form select,
+.review-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.review-form button {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin: 0 auto; /* centra el botón */
+}
+
+.review-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Lista de reviews */
+.review-list {
+  width: 100%;
+}
+
+.review-item {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.review-item p {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.loading {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 60px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dish-info h2 {
+    font-size: 1.8rem;
+  }
+
+  .dish-category {
+    padding: 5px 10px;
+  }
+
+  .review-form {
+    padding: 20px;
+  }
+}
