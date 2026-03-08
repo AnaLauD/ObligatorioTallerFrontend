@@ -71,3 +71,38 @@
   color: #dc2626;
   font-size: 0.9rem;
 }
+
+.login-register-text {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.login-register-link {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.login-register-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #4f46e5;
+  transition: width 0.25s ease;
+}
+
+.login-register-link:hover {
+  color: #3730a3;
+}
+
+.login-register-link:hover::after {
+  width: 100%;
+}

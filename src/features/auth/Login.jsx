@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "./AuthenticationContext";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
@@ -50,6 +51,13 @@ function Login() {
         onChange={e => setPassword(e.target.value)}
         required
       />
+
+      <p className="login-register-text">
+          ¿No tienes una cuenta aún?{" "}
+          <Link to="/register" className="login-register-link">
+            Regístrate
+          </Link>
+        </p>
 
       <button
         className="login-button"

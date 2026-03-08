@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { register } from "../../api/authentication";
 import "./Register.css";
 
@@ -55,6 +56,13 @@ function Register() {
         onChange={e => setPassword(e.target.value)}
         required
       />
+
+      <p className="login-register-text">
+          ¿Ya tienes cuenta?{" "}
+          <Link to="/login" className="login-register-link">
+            Inicia sesión
+          </Link>
+        </p>
 
       <button className="register-button" type="submit">
         Crear cuenta
