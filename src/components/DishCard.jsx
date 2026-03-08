@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getDishById } from "../api/DishesApi";
+import "./css/DishCard.css";
 
 function DishCard({ dish }) {
 

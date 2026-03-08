@@ -64,6 +64,7 @@ const { user, logout } = useAuth();
 <>
     <Header activeTab={null} setActiveTab={null} user={user} logout={logout} />
 
+<div className="local-detail-container">
     <div className="local-detail">
 
       {/* Imagen principal */}
@@ -130,8 +131,23 @@ const { user, logout } = useAuth();
     <button type="submit">Enviar review</button>
   </form>
 </div>
+
+      <div className="review-list">
+        <h3>Opiniones</h3>
+        {local.reviews.length === 0 ? (
+          <p>No hay opiniones aún</p>
+        ) : (
+          local.reviews.map((rev, idx) => (
+            <div key={idx} className="review-item">
+              <p>⭐ {rev.rating}</p>
+              <p>{rev.comment}</p>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
 </div>
-    </>
+  </>
   );
 }
 
